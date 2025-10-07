@@ -4,9 +4,26 @@ import pandas as pd
 from db_cliente import engine
 import bcrypt
 
+# --- Configurazione pagina ---
 st.set_page_config(page_title="Login Dashboard", layout="centered")
 
+# --- Nasconde completamente la sidebar ---
+st.markdown("""
+    <style>
+        [data-testid="stSidebar"], [data-testid="stSidebarNav"], section[data-testid="stSidebarHeader"] {
+            display: none !important;
+        }
+        .block-container {
+            max-width: 450px !important;
+            margin: auto !important;
+            padding-top: 4rem !important;
+        }
+    </style>
+""", unsafe_allow_html=True)
+
+# --- UI login ---
 st.title("🔐 Accesso alla Dashboard")
+
 username = st.text_input("Username")
 password = st.text_input("Password", type="password")
 
@@ -24,7 +41,6 @@ if st.button("Accedi"):
                 st.error("❌ Utente non trovato.")
             else:
                 user_data = user.iloc[0]
-
                 stored_pw = user_data["password"]
 
                 try:
