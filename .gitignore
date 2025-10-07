@@ -1,0 +1,10 @@
+# Secrets e config locali
+client_secret.json
+dashboard/secret
+cloud_settings.json
+current_user.json
+.streamlit/secrets.toml
+
+# Cache e temporanei
+__pycache__/
+*.pyc
